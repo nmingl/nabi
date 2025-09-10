@@ -39,33 +39,14 @@ img {
 /* header */
 header {
     min-height: 100vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(image/main-bg1.png) center/cover no-repeat fixed;
     display: flex;
     flex-direction: column;
     justify-content: stretch;
-    animation: changebg 9s infinite;
-    background-size: contain;
-    background-repeat: no-repeat;
-}
-
-@keyframes changebg {
-    0%, 100% {
-        background-image: url('image/main-bg1.png');
-    }
-    25% {
-        background-image: url('image/main-bg2.png');
-    }
-    50% {
-        background-image: url('image/main-bg3.png');
-    }
-    75% {
-        background-image: url('image/main-bg4.png');
-    }
 }
 
 .navbar {
-    background: transparent;
-    padding: 1rem 0; /* Adjust padding */
+    background: #9dadbc;
+    padding: 1rem 0; 
 }
 
 
@@ -100,12 +81,11 @@ header {
     transition: background-color 0.3s ease; /* Add transition */
 }
 
-
 .navbar-nav a:hover {
     background-color: #85929e; /* Change background color on hover */
 }
-
 .banner {
+    position: relative;
     flex: 1;
     display: flex;
     align-items: center;
@@ -115,18 +95,24 @@ header {
 }
 
 .banner-title {
+    position: relative;
+    z-index: 2; /* Ensure the title appears above the video */
     font-size: 3rem;
     font-family: var(--Poppins);
     line-height: 1.2;
     color: #bdddfb;
 }
 
-.banner-title span {
+.banner span {
+    position: relative;
+    z-index: 2; /* Ensure the span appears above the video */
     font-family: var(--Poppins);
     color: #f0dbe8;
 }
 
 .banner p {
+    position: relative;
+    z-index: 2; /* Ensure the paragraph appears above the video */
     padding: 1rem 0 2rem 0;
     font-size: 1.2rem;
     font-family: var(--Roboto);
@@ -143,15 +129,36 @@ header {
     justify-content: space-between;
 }
 
-/* provinces */
-.section-container {
+header video {
+    position: absolute;
+    top: 0; 
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0; /* Ensure the video stays behind the text */
+}
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* Adjust opacity as needed */
+    z-index: 2; /* Ensure the overlay is on top of the video and text */
+}
+
+
+/*festival*/
+.fest-container {
     max-width: var(--max-width);
     margin: auto;
     padding: 5rem 1rem;
     text-align: center;
+    
 }
   
-.section-header {
+.fest-header {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -160,75 +167,69 @@ header {
     margin-bottom: 1rem;
 }
   
-.section-title {
-    font-size: 2rem;
+.festi-title {
+    font-size: 2.5rem;
     font-weight: 600;
     color: var(--text-dark);
     margin-bottom: 1rem;
 }
-  
-.section-subtitle {
-    font-size: 1rem;
-    color: var(--text-dark);
-    max-width: calc(var(--max-width) / 2);
+
+.fest-title {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
 }
-.section-subtitle a {
-    font-size: 1rem;
-    color: var(--text-dark);
-    max-width: calc(var(--max-width) / 2);
-    text-decoration: underline;
-}
-  
-  
-.destination-grid {
+
+.fest-grid {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
 }
   
-.destination-card {
+.fest-card {
     overflow: hidden;
     position: relative;
     isolation: isolate;
     cursor: pointer;
 }
   
-.destination-card img {
+.fest-card img {
     border-radius: 1rem;
 }
   
-.destination-details {
+.fest-details {
     position: absolute;
     width: calc(100% - 2rem);
     padding: 1rem;
-    bottom: -6rem;
+    bottom: -20rem;
     left: 50%;
     transform: translateX(-50%);
-    text-align: center;
+    text-align: justify;
     color: var(--extra-light);
     background-color: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(5px);
     border-radius: 10px;
     z-index: 1;
     transition: 0.3s;
 }
   
-.destination-card:hover .destination-details {
-    bottom: 1rem;
+.fest-card:hover .fest-details {
+    bottom: 0rem; /* Move up to the middle when hovered */
 }
   
-.destination-title {
-    font-size: 0.9rem;
+.fest-title {
+    font-size: 1.5rem;
     margin-bottom: 0.5rem;
+    color: #fafcff;
 }
   
-.destination-subtitle {
+.fest-subtitle {
     font-size: 1rem;
     font-weight: 600;
 }
 
-/*nav*/
-.nav-container {
+/*visayas*/
+.vis-container {
     max-width: var(--max-width);
     margin: auto;
     padding: 5rem 1rem;
@@ -236,7 +237,7 @@ header {
     background-color: #b0c2d2;
 }
   
-.nav-header {
+.vis-header {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -245,63 +246,72 @@ header {
     margin-bottom: 1rem;
 }
   
-.navi-title {
-    font-size: 2rem;
+.visa-title {
+    font-size: 2.5rem;
     font-weight: 600;
     color: var(--text-dark);
     margin-bottom: 1rem;
 }
 
-.nav-grid {
+.vis-title {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+   
+.vis-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
 }
   
-.nav-card {
+.vis-card {
     overflow: hidden;
     position: relative;
     isolation: isolate;
     cursor: pointer;
 }
   
-.nav-card img {
+.vis-card img {
     border-radius: 1rem;
 }
   
-.nav-details {
+.vis-details {
+    position: absolute;
     position: absolute;
     width: calc(100% - 2rem);
     padding: 1rem;
-    bottom: -6rem;
+    bottom: -20rem;
     left: 50%;
     transform: translateX(-50%);
-    text-align: center;
+    text-align: justify;
     color: var(--extra-light);
     background-color: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(5px);
     border-radius: 10px;
     z-index: 1;
     transition: 0.3s;
 }
   
-.nav-card:hover .nav-details {
-    bottom: 1rem;
+.vis-card:hover .vis-details {
+    bottom: 0rem;
 }
   
-.nav-title {
+.vis-title {
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
+    color: #fafcff;
 }
   
-.nav-subtitle {
+.vis-subtitle {
     font-size: 1rem;
     font-weight: 600;
 }
 
+
 /* footer */
 footer {
-    background: #9dadbc;
+    background:#9dadbc;
     color: #fff;
     text-align: center;
     padding: 2rem 0;
@@ -370,8 +380,8 @@ footer {
         padding: 0.8rem 0;
     }
 
-    .design-content {
-        grid-template-columns: repeat(3, 1fr); /* Show 3 columns */
+    .festival-content {
+        grid-template-columns: repeat(2, 1fr); /* Show 3 columns */
     }
     .design-item {
         margin: 1.5rem 0;

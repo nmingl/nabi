@@ -39,33 +39,57 @@ img {
 /* header */
 header {
     min-height: 100vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(image/main-bg1.png) center/cover no-repeat fixed;
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: stretch;
     animation: changebg 9s infinite;
     background-size: contain;
     background-repeat: no-repeat;
+    z-index: 0;
+}
+
+.overlay {
+    position: absolute;
+    display: flex;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); 
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 @keyframes changebg {
-    0%, 100% {
-        background-image: url('image/main-bg1.png');
+    0% {
+        background-image: url('image/landmark1.png');
     }
-    25% {
-        background-image: url('image/main-bg2.png');
+    16.666% {
+        background-image: url('image/landmark2.png');
+    }
+    33.333% {
+        background-image: url('image/landmark3.png');
     }
     50% {
-        background-image: url('image/main-bg3.png');
+        background-image: url('image/landmark4.png');
     }
-    75% {
-        background-image: url('image/main-bg4.png');
+    66.666% {
+        background-image: url('image/landmark5.png');
+    }
+    83.333% {
+        background-image: url('image/landmark6.png');
+    }
+    100% {
+        background-image: url('image/landmark1.png');
     }
 }
 
 .navbar {
     background: transparent;
-    padding: 1rem 0; /* Adjust padding */
+    padding: 1rem 0; 
+    position: relative; 
+    z-index: 3; 
 }
 
 
@@ -77,6 +101,7 @@ header {
     text-decoration: none;
     font-family: var(--Poppins);
     letter-spacing: 1px;
+    z-index: 3;
 }
 
 .logo {
@@ -115,6 +140,8 @@ header {
 }
 
 .banner-title {
+    position: relative;
+    z-index: 2;
     font-size: 3rem;
     font-family: var(--Poppins);
     line-height: 1.2;
@@ -122,11 +149,15 @@ header {
 }
 
 .banner-title span {
+    position: relative;
+    z-index: 2; 
     font-family: var(--Poppins);
     color: #f0dbe8;
 }
 
 .banner p {
+    position: relative;
+    z-index: 2; 
     padding: 1rem 0 2rem 0;
     font-size: 1.2rem;
     font-family: var(--Roboto);
@@ -172,13 +203,6 @@ header {
     color: var(--text-dark);
     max-width: calc(var(--max-width) / 2);
 }
-.section-subtitle a {
-    font-size: 1rem;
-    color: var(--text-dark);
-    max-width: calc(var(--max-width) / 2);
-    text-decoration: underline;
-}
-  
   
 .destination-grid {
     display: grid;
